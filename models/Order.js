@@ -1,16 +1,22 @@
 const mongoose = require('mongoose')
 
 const orderSchema = new mongoose.Schema({
-    orderDate: Date(),
+    orderDate: {
+        type: mongoose.SchemaTypes.Date,
+        default: Date.now
+    },
     cartId: {
         type: mongoose.SchemaTypes.ObjectId,
         required: true
     },
     paymentId: {
-        type: mongoose.SchemaTypes.ObjectId,
+        type: String,
         required: true
     },
-    total: Number
+    userId: {
+        type: String,
+        required: true
+    }
 })
 
 const Order = mongoose.model('order', orderSchema)
