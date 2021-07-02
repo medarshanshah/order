@@ -30,7 +30,6 @@ module.exports.post_createOrder = async (req,res) => {
     let userId = req.cookies['userId']
 
     try {
-        await axios.delete(`http://localhost:7000/cart/${cartId}`)
         const order = await Order.create({ cartId, paymentId, userId })             
         console.log(order)
         res.status(201).json(order)
